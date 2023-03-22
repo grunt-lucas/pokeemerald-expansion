@@ -2324,3 +2324,22 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
+
+bool8 ScrCmd_showface(struct ScriptContext *ctx)
+{
+    u8 spriteId = ScriptReadByte(ctx);
+    // LTODO handle these other fields
+    // u8 emotion = ScriptReadByte(ctx);
+    // bool8 positionRight = ScriptReadByte(ctx);
+    // u8 nameMode = ScriptReadByte(ctx);
+    CreateMugSprite(spriteId);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_hideface(struct ScriptContext *ctx)
+{
+    u8 mode = ScriptReadByte(ctx);
+    DeleteMugSprites(mode);
+    return FALSE;
+}

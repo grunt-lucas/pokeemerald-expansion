@@ -281,7 +281,7 @@ u8 gReservedSpritePaletteCount;
 
 EWRAM_DATA struct Sprite gSprites[MAX_SPRITES + 1] = {0};
 EWRAM_DATA static u16 sSpritePriorities[MAX_SPRITES] = {0};
-EWRAM_DATA static u8 sSpriteOrder[MAX_SPRITES] = {0};
+EWRAM_DATA u8 gSpriteOrder[MAX_SPRITES] = {0};
 EWRAM_DATA static bool8 sShouldProcessSpriteCopyRequests = 0;
 EWRAM_DATA static u8 sSpriteCopyRequestCount = 0;
 EWRAM_DATA static struct SpriteCopyRequest sSpriteCopyRequests[MAX_SPRITES] = {0};
@@ -377,10 +377,10 @@ void SortSprites(void)
     for (i = 1; i < MAX_SPRITES; i++)
     {
         u8 j = i;
-        struct Sprite *sprite1 = &gSprites[sSpriteOrder[i - 1]];
-        struct Sprite *sprite2 = &gSprites[sSpriteOrder[i]];
-        u16 sprite1Priority = sSpritePriorities[sSpriteOrder[i - 1]];
-        u16 sprite2Priority = sSpritePriorities[sSpriteOrder[i]];
+        struct Sprite *sprite1 = &gSprites[gSpriteOrder[i - 1]];
+        struct Sprite *sprite2 = &gSprites[gSpriteOrder[i]];
+        u16 sprite1Priority = sSpritePriorities[gSpriteOrder[i - 1]];
+        u16 sprite2Priority = sSpritePriorities[gSpriteOrder[i]];
         s16 sprite1Y = sprite1->oam.y;
         s16 sprite2Y = sprite2->oam.y;
 
@@ -416,12 +416,12 @@ void SortSprites(void)
             && ((sprite1Priority > sprite2Priority)
              || (sprite1Priority == sprite2Priority && sprite1Y < sprite2Y)))
         {
-            u8 temp = sSpriteOrder[j];
-            sSpriteOrder[j] = sSpriteOrder[j - 1];
-            sSpriteOrder[j - 1] = temp;
+            u8 temp = gSpriteOrder[j];
+            gSpriteOrder[j] = gSpriteOrder[j - 1];
+            gSpriteOrder[j - 1] = temp;
 
             // UB: If j equals 1, then j-- makes j equal 0.
-            // Then, sSpriteOrder[-1] gets accessed below.
+            // Then, gSpriteOrder[-1] gets accessed below.
             // Although this doesn't result in a bug in the ROM,
             // the behavior is undefined.
             j--;
@@ -430,10 +430,10 @@ void SortSprites(void)
                 break;
 #endif
 
-            sprite1 = &gSprites[sSpriteOrder[j - 1]];
-            sprite2 = &gSprites[sSpriteOrder[j]];
-            sprite1Priority = sSpritePriorities[sSpriteOrder[j - 1]];
-            sprite2Priority = sSpritePriorities[sSpriteOrder[j]];
+            sprite1 = &gSprites[gSpriteOrder[j - 1]];
+            sprite2 = &gSprites[gSpriteOrder[j]];
+            sprite1Priority = sSpritePriorities[gSpriteOrder[j - 1]];
+            sprite2Priority = sSpritePriorities[gSpriteOrder[j]];
             sprite1Y = sprite1->oam.y;
             sprite2Y = sprite2->oam.y;
 
@@ -488,7 +488,7 @@ void AddSpritesToOamBuffer(void)
 
     while (i < MAX_SPRITES)
     {
-        struct Sprite *sprite = &gSprites[sSpriteOrder[i]];
+        struct Sprite *sprite = &gSprites[gSpriteOrder[i]];
         if (sprite->inUse && !sprite->invisible && AddSpriteToOamBuffer(sprite, &oamIndex))
             return;
         i++;
@@ -854,7 +854,7 @@ void ResetAllSprites(void)
     for (i = 0; i < MAX_SPRITES; i++)
     {
         ResetSprite(&gSprites[i]);
-        sSpriteOrder[i] = i;
+        gSpriteOrder[i] = i;
     }
 
     ResetSprite(&gSprites[i]);

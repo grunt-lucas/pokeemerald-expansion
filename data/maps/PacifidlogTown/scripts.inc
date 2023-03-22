@@ -12,7 +12,7 @@ PacifidlogTown_OnResume:
 	end
 
 PacifidlogTown_EventScript_NinjaBoy::
-	msgbox PacifidlogTown_Text_NeatHousesOnWater, MSGBOX_NPC
+	msgbox PacifidlogTown_Text_NeatHousesOnWater, MSGBOX_NPC, MUG_CYNTHIA
 	end
 
 PacifidlogTown_EventScript_Girl::

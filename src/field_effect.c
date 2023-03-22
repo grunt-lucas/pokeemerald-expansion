@@ -31,6 +31,7 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/mugs.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
@@ -3913,3 +3914,115 @@ static void Task_MoveDeoxysRock(u8 taskId)
 #undef tVelocityY
 #undef tMoveSteps
 #undef tObjEventId
+
+// Impls for mugs
+
+#define TAG_MUG_LEFT 0x1337
+#define TAG_MUG_RIGHT 0x1338
+
+#define MUG_POS_LEFT_X 40
+#define MUG_POS_RIGHT_X 240 - MUG_POS_LEFT_X
+#define MUG_POS_Y 90
+
+static const struct OamData sMugOam = {
+    .size = SPRITE_SIZE(64x64),
+    .shape = SPRITE_SHAPE(64x64)
+};
+
+static const struct SpriteTemplate sMugTemplate = 
+{
+    .tileTag = TAG_MUG_RIGHT,
+    .paletteTag = TAG_MUG_RIGHT,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .images = NULL,
+    .callback = SpriteCallbackDummy,
+    .oam = &sMugOam,
+};
+
+static const struct WindowTemplate sMugNameWindow = 
+{
+    .bg = 0,
+    .paletteNum = 15,
+    .baseBlock = 0x125,
+    .tilemapLeft = 20,
+    .tilemapTop = 11,
+    .width = 6,
+    .height = 2,
+};
+
+static const u32 sMugSpriteCynthiaGfx[] = INCBIN_U32("graphics/mugs/cynthia/cynthia_mug.4bpp.lz");
+static const u16 sMugSpriteCynthiaPal[] = INCBIN_U16("graphics/mugs/cynthia/cynthia_mug.gbapal");
+
+static const u8 sMugCynthiaName[] = _("Cynthia");
+
+static const u8* const sMugNames[] =
+{
+    [MUG_CYNTHIA] = sMugCynthiaName,
+};
+
+static const struct MugSpritePalPair sMugSpriteSheets[][MUG_COUNT] = 
+{
+    [MUG_CYNTHIA] = {
+        [MUG_NORMAL] = {sMugSpriteCynthiaGfx, sMugSpriteCynthiaPal}
+    }
+};
+
+static u8 FindMugSprite(u16 tag)
+{
+    u32 i;
+    // LTODO in sots, they have a gSpriteInUseCount variable and heavily modified sprite.c
+    for (i = 0; i < MAX_SPRITES; i++)
+    {
+        struct Sprite *sprite = &gSprites[gSpriteOrder[i]];
+        if (sprite->template->tileTag == tag && sprite->inUse)
+        {
+            return gSpriteOrder[i];
+        }
+    }
+    return MAX_SPRITES;
+}
+
+static void Task_CreateNameWindow(u8 taskId)
+{
+    // LTODO actually display the name
+    DestroyTask(taskId);
+}
+
+void CreateMugSprite(u8 id)
+{
+    const void *gfx, *pal;
+    struct CompressedSpriteSheet sheetToLoad;
+    struct SpritePalette palToLoad;
+    u8 createdSprite, currentSpriteId;
+
+    // LTODO insert sanity checks that exit early if the ID is bad
+    gfx = sMugSpriteSheets[id][MUG_NORMAL].gfx;
+    pal = sMugSpriteSheets[id][MUG_NORMAL].pal;
+
+    sheetToLoad.data = gfx;
+    sheetToLoad.size = 64*32;
+    sheetToLoad.tag = TAG_MUG_RIGHT;
+    palToLoad.data = pal;
+    palToLoad.tag = sheetToLoad.tag;
+
+    currentSpriteId = FindMugSprite(sheetToLoad.tag);
+    if(currentSpriteId != MAX_SPRITES)
+    {
+        DestroySprite(&gSprites[currentSpriteId]);
+        FreeSpriteTilesByTag(sheetToLoad.tag);
+        FreeSpritePaletteByTag(palToLoad.tag);
+    }
+    LoadCompressedSpriteSheet(&sheetToLoad);
+    LoadSpritePalette(&palToLoad);
+
+    createdSprite = CreateSprite(&sMugTemplate, MUG_POS_RIGHT_X, MUG_POS_Y, 0);
+
+    // LTODO here we would handle name plate window
+    gSprites[createdSprite].data[0] = 0xFF;
+}
+
+void DeleteMugSprites(u8 mode)
+{
+
+}

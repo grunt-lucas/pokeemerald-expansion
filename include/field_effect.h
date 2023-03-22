@@ -1,6 +1,12 @@
 #ifndef GUARD_FIELD_EFFECTS_H
 #define GUARD_FIELD_EFFECTS_H
 
+struct MugSpritePalPair
+{
+    const void *gfx;
+    const void *pal;
+};
+
 extern const struct SpritePalette gNewGameBirchObjectPaletteInfo;
 extern const struct SpriteTemplate gNewGameBirchObjectTemplate;
 extern const struct OamData gNewGameBirchOamAttributes;
@@ -46,5 +52,7 @@ void MultiplyPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b);
 void FreeResourcesAndDestroySprite(struct Sprite *sprite, u8 spriteId);
 u8 CreateMonSprite_PicBox(u16 species, s16 x, s16 y, u8 subpriority);
 void StartEscapeRopeFieldEffect(void);
+void CreateMugSprite(u8 id);
+void DeleteMugSprites(u8 mode);
 
 #endif // GUARD_FIELD_EFFECTS_H
