@@ -3920,9 +3920,9 @@ static void Task_MoveDeoxysRock(u8 taskId)
 #define TAG_MUG_LEFT 0x1337
 #define TAG_MUG_RIGHT 0x1338
 
-#define MUG_POS_LEFT_X 40
+#define MUG_POS_LEFT_X 44
 #define MUG_POS_RIGHT_X 240 - MUG_POS_LEFT_X
-#define MUG_POS_Y 90
+#define MUG_POS_Y 83
 
 static const struct OamData sMugOam = {
     .size = SPRITE_SIZE(64x64),
@@ -4022,7 +4022,26 @@ void CreateMugSprite(u8 id)
     gSprites[createdSprite].data[0] = 0xFF;
 }
 
+static void TryDeleteMugSprite(u16 tag)
+{
+    u8 spriteId = FindMugSprite(tag);
+    if(spriteId != MAX_SPRITES)
+    {
+        DestroySprite(&gSprites[spriteId]);
+        FreeSpriteTilesByTag(tag);
+        FreeSpritePaletteByTag(tag);
+    }
+}
+
 void DeleteMugSprites(u8 mode)
 {
-
+    switch(mode)
+    {
+        case MUG_BOTH:
+            TryDeleteMugSprite(TAG_MUG_LEFT);
+            TryDeleteMugSprite(TAG_MUG_RIGHT);
+        break;
+        default:
+            AGB_WARNING(FALSE);
+    }
 }
