@@ -7,6 +7,7 @@
 
 // Mug indexes, add more for more NPCs
 #define MUG_CYNTHIA 0
+#define MUG_STEVEN 1
 
 // Later we can implement two mugs in one convo, a left and right
 #define MUG_LEFT 0

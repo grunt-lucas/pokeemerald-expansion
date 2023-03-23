@@ -20,7 +20,7 @@ PacifidlogTown_EventScript_Girl::
 	end
 
 PacifidlogTown_EventScript_Fisherman::
-	msgbox PacifidlogTown_Text_SkyPillarTooScary, MSGBOX_NPC
+	msgbox PacifidlogTown_Text_SkyPillarTooScary, MSGBOX_NPC, MUG_STEVEN
 	end
 
 PacifidlogTown_EventScript_TownSign::

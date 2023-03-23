@@ -3954,17 +3954,25 @@ static const struct WindowTemplate sMugNameWindow =
 static const u32 sMugSpriteCynthiaGfx[] = INCBIN_U32("graphics/mugs/cynthia/cynthia_mug.4bpp.lz");
 static const u16 sMugSpriteCynthiaPal[] = INCBIN_U16("graphics/mugs/cynthia/cynthia_mug.gbapal");
 
+static const u32 sMugSpriteStevenGfx[] = INCBIN_U32("graphics/mugs/steven/steven_mug.4bpp.lz");
+static const u16 sMugSpriteStevenPal[] = INCBIN_U16("graphics/mugs/steven/steven_mug.gbapal");
+
 static const u8 sMugCynthiaName[] = _("Cynthia");
+static const u8 sMugStevenName[] = _("Steven");
 
 static const u8* const sMugNames[] =
 {
     [MUG_CYNTHIA] = sMugCynthiaName,
+    [MUG_STEVEN] = sMugStevenName,
 };
 
 static const struct MugSpritePalPair sMugSpriteSheets[][MUG_COUNT] = 
 {
     [MUG_CYNTHIA] = {
         [MUG_NORMAL] = {sMugSpriteCynthiaGfx, sMugSpriteCynthiaPal}
+    },
+    [MUG_STEVEN] = {
+        [MUG_NORMAL] = {sMugSpriteStevenGfx, sMugSpriteStevenPal}
     }
 };
 
