@@ -6,6 +6,7 @@
 #include "main.h"
 #include "party_menu.h"
 #include "sprite.h"
+#include "surfable.h"
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/moves.h"
@@ -27,10 +28,10 @@ struct RideablePokemon
     u8 trainerPose;
 };
 
-#include "data/object_events/surfable_pokemon.h"
-#include "data/object_events/surfable_pokemon_graphics.h"
-#include "data/object_events/surfable_pokemon_pic_tables.h"
-#include "data/object_events/surfable_pokemon_templates.h"
+#include "data/object_events/surfable/surfable_pokemon.h"
+#include "data/object_events/surfable/surfable_pokemon_graphics.h"
+#include "data/object_events/surfable/surfable_pokemon_pic_tables.h"
+#include "data/object_events/surfable/surfable_pokemon_templates.h"
 
 static EWRAM_DATA u16 sCurrentSurfMon = {0};
 
