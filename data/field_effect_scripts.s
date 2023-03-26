@@ -105,8 +105,8 @@ gFieldEffectScript_Ash::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_Ash
 	field_eff_end
 
-gFieldEffectScript_SurfBlob::
-	field_eff_callnative FldEff_SurfBlob
+gFieldEffectScript_SurfBlob:: @ 82DBB1C
+	field_eff_callnative CreateSurfablePokemonSprite
 	field_eff_end
 
 gFieldEffectScript_UseSurf::
