@@ -1186,3 +1186,35 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
             sSecondaryTilesetAnimCallback = NULL;
     }
 }
+
+// Our custom animation code below:
+
+const u16 gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/flower_red/00.4bpp");
+const u16 gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/flower_red/01.4bpp");
+const u16 gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/flower_red/02.4bpp");
+
+const u16 *const gTilesetAnims_PorytilesPrimaryTutorial_Flower[] = {
+    gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame0,
+    gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame1,
+    gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame0,
+    gTilesetAnims_PorytilesPrimaryTutorial_Flower_Frame2
+};
+
+static void QueueAnimTiles_PorytilesPrimaryTutorial_Flower(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_PorytilesPrimaryTutorial_Flower);
+    AppendTilesetAnimToBuffer(gTilesetAnims_PorytilesPrimaryTutorial_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(1)), 4 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_PorytilesPrimaryTutorial(u16 timer) {
+    if (timer % 16 == 0) {
+        QueueAnimTiles_PorytilesPrimaryTutorial_Flower(timer / 16);
+    }
+}
+
+void InitTilesetAnim_PorytilesPrimaryTutorial(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_PorytilesPrimaryTutorial;
+}

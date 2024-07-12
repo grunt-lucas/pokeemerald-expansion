@@ -834,7 +834,7 @@ const struct Tileset gTileset_PorytilesPrimaryTutorial =
     .palettes = gTilesetPalettes_PorytilesPrimaryTutorial,
     .metatiles = gMetatiles_PorytilesPrimaryTutorial,
     .metatileAttributes = gMetatileAttributes_PorytilesPrimaryTutorial,
-    .callback = NULL,
+    .callback = InitTilesetAnim_PorytilesPrimaryTutorial,
 };
 
 const struct Tileset gTileset_PorytilesSecondaryTutorial =
