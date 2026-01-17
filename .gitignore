@@ -66,3 +66,7 @@ tools/aif2pcm/aif2pcm
 *.smolTM
 __pycache__
 .map_version
+
+# Porytiles files
+porytiles/**/config.local.yaml
+porytiles/**/*.cache.json
