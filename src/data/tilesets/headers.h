@@ -832,6 +832,7 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+<<<<<<< HEAD
 
 #else
 
@@ -1541,3 +1542,14 @@ const struct Tileset gTileset_HallOfFame =
 };
 
 #endif // IS_FRLG
+
+const struct Tileset gTileset_PorytilesTest1 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_PorytilesManaged_PorytilesTest1,
+    .palettes = gTilesetPalettes_PorytilesManaged_PorytilesTest1,
+    .metatiles = gMetatiles_PorytilesManaged_PorytilesTest1,
+    .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesTest1,
+    .callback = NULL,
+};

@@ -209,6 +209,7 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+<<<<<<< HEAD
 
 #else
 
@@ -408,3 +409,6 @@ const u16 gMetatiles_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_
 const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary/hall_of_fame_frlg/metatile_attributes.bin");
 
 #endif // IS_FRLG
+
+const u16 gMetatiles_PorytilesManaged_PorytilesTest1[] = INCBIN_U16("data/tilesets/primary/porytiles_test1/porytiles_bin/metatiles.bin");
+const u16 gMetatileAttributes_PorytilesManaged_PorytilesTest1[] = INCBIN_U16("data/tilesets/primary/porytiles_test1/porytiles_bin/metatile_attributes.bin");
