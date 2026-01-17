@@ -9323,6 +9323,16 @@
       "border_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/border.bin",
       "blockdata_filepath": "data/layouts/OneIsland_KindleRoad_EmberSpa_Frlg/map.bin",
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_PORYTILES_TEST1",
+      "name": "PorytilesTest1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_PorytilesTest1",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/PorytilesTest1/border.bin",
+      "blockdata_filepath": "data/layouts/PorytilesTest1/map.bin"
     }
   ]
 }
