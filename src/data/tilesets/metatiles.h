@@ -412,3 +412,6 @@ const u16 gMetatileAttributes_HallOfFame[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_PorytilesManaged_PorytilesTest1[] = INCBIN_U16("data/tilesets/primary/porytiles_test1/porytiles_bin/metatiles.bin");
 const u16 gMetatileAttributes_PorytilesManaged_PorytilesTest1[] = INCBIN_U16("data/tilesets/primary/porytiles_test1/porytiles_bin/metatile_attributes.bin");
+
+const u16 gMetatiles_PorytilesManaged_PorytilesInvalidAlphaChannel[] = INCBIN_U16("data/tilesets/primary/porytiles_invalid_alpha_channel/porytiles_bin/metatiles.bin");
+const u16 gMetatileAttributes_PorytilesManaged_PorytilesInvalidAlphaChannel[] = INCBIN_U16("data/tilesets/primary/porytiles_invalid_alpha_channel/porytiles_bin/metatile_attributes.bin");
