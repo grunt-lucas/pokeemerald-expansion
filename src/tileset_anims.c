@@ -1435,3 +1435,6 @@ void InitTilesetAnim_CeladonGym(void)
 
 // [Porytiles] Auto-generated include. Do not remove.
 #include "porytiles_generated/tilesets/porytiles_invalid_alpha_channel/generated_anim_code.h"
+
+// [Porytiles] Auto-generated include. Do not remove.
+#include "porytiles_generated/tilesets/porytiles_tile_color_count_limit/generated_anim_code.h"

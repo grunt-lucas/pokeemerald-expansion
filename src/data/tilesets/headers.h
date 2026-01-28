@@ -1564,3 +1564,14 @@ const struct Tileset gTileset_PorytilesInvalidAlphaChannel =
     .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesInvalidAlphaChannel,
     .callback = InitTilesetAnim_PorytilesManaged_PorytilesInvalidAlphaChannel,
 };
+
+const struct Tileset gTileset_PorytilesTileColorCountLimit =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_PorytilesManaged_PorytilesTileColorCountLimit,
+    .palettes = gTilesetPalettes_PorytilesManaged_PorytilesTileColorCountLimit,
+    .metatiles = gMetatiles_PorytilesManaged_PorytilesTileColorCountLimit,
+    .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesTileColorCountLimit,
+    .callback = InitTilesetAnim_PorytilesManaged_PorytilesTileColorCountLimit,
+};
