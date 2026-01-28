@@ -1553,3 +1553,14 @@ const struct Tileset gTileset_PorytilesTest1 =
     .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesTest1,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_PorytilesInvalidAlphaChannel =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_PorytilesManaged_PorytilesInvalidAlphaChannel,
+    .palettes = gTilesetPalettes_PorytilesManaged_PorytilesInvalidAlphaChannel,
+    .metatiles = gMetatiles_PorytilesManaged_PorytilesInvalidAlphaChannel,
+    .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesInvalidAlphaChannel,
+    .callback = InitTilesetAnim_PorytilesManaged_PorytilesInvalidAlphaChannel,
+};
