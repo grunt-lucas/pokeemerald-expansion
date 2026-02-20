@@ -1575,3 +1575,14 @@ const struct Tileset gTileset_PorytilesTileColorCountLimit =
     .metatileAttributes = gMetatileAttributes_PorytilesManaged_PorytilesTileColorCountLimit,
     .callback = InitTilesetAnim_PorytilesManaged_PorytilesTileColorCountLimit,
 };
+
+const struct Tileset gTileset_FooBar =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_PorytilesManaged_FooBar,
+    .palettes = gTilesetPalettes_PorytilesManaged_FooBar,
+    .metatiles = gMetatiles_PorytilesManaged_FooBar,
+    .metatileAttributes = gMetatileAttributes_PorytilesManaged_FooBar,
+    .callback = InitTilesetAnim_PorytilesManaged_FooBar,
+};

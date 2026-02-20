@@ -418,3 +418,6 @@ const u16 gMetatileAttributes_PorytilesManaged_PorytilesInvalidAlphaChannel[] = 
 
 const u16 gMetatiles_PorytilesManaged_PorytilesTileColorCountLimit[] = INCBIN_U16("data/tilesets/primary/porytiles_tile_color_count_limit/porytiles_bin/metatiles.bin");
 const u16 gMetatileAttributes_PorytilesManaged_PorytilesTileColorCountLimit[] = INCBIN_U16("data/tilesets/primary/porytiles_tile_color_count_limit/porytiles_bin/metatile_attributes.bin");
+
+const u16 gMetatiles_PorytilesManaged_FooBar[] = INCBIN_U16("data/tilesets/primary/foo_bar/porytiles_bin/metatiles.bin");
+const u16 gMetatileAttributes_PorytilesManaged_FooBar[] = INCBIN_U16("data/tilesets/primary/foo_bar/porytiles_bin/metatile_attributes.bin");
