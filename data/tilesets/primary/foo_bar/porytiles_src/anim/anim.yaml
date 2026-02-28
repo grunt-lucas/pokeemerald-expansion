@@ -1,3 +1,0 @@
-flower:
-  frames: [center, right, left]
-  frame_order: [center, right, center, left]
