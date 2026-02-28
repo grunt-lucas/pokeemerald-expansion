@@ -832,7 +832,6 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
-<<<<<<< HEAD
 
 #else
 

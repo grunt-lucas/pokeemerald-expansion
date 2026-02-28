@@ -1,0 +1,15 @@
+{
+  "flower": {
+    "frame_order": [
+      "center",
+      "right",
+      "center",
+      "left"
+    ],
+    "frames": [
+      "center",
+      "right",
+      "left"
+    ]
+  }
+}
